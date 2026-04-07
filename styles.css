@@ -788,17 +788,61 @@ h3 {
   .nav,
   .nav-right {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
   }
 
   .nav {
     padding: 14px 0;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .logo {
+    text-align: center;
+  }
+
+  .nav-right {
+    gap: 0;
   }
 
   .nav nav {
+    display: none;
+  }
+
+  .lang-switch {
+    margin: 0 auto;
+  }
+
+  .use-card,
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .use-card-text,
+  .profile-content,
+  .use-card-media,
+  .profile-media {
     width: 100%;
-    gap: 16px;
+  }
+
+  .use-card-media,
+  .profile-media {
+    order: 2;
+    height: auto;
+    min-height: 0;
+  }
+
+  .use-card-media img,
+  .profile-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
   }
 
   .hero {
@@ -1101,4 +1145,57 @@ h3 {
   height: 100%;
   min-height: 100%;
   object-fit: cover;
+}
+/* Mobile override: place images below text in use-cases and profile */
+@media (max-width: 760px) {
+  #use-cases .use-card,
+  #profil .profile-card,
+  #profile .profile-card,
+  .use-card.profile-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  #use-cases .use-card > .use-card-text,
+  #use-cases .use-card > .use-card-media,
+  #profil .profile-card > .profile-content,
+  #profil .profile-card > .profile-media,
+  #profile .profile-card > .profile-content,
+  #profile .profile-card > .profile-media,
+  .use-card.profile-card > .profile-content,
+  .use-card.profile-card > .profile-media {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  #use-cases .use-card > .use-card-text,
+  #profil .profile-card > .profile-content,
+  #profile .profile-card > .profile-content,
+  .use-card.profile-card > .profile-content {
+    order: 1 !important;
+  }
+
+  #use-cases .use-card > .use-card-media,
+  #profil .profile-card > .profile-media,
+  #profile .profile-card > .profile-media,
+  .use-card.profile-card > .profile-media {
+    order: 2 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: 18px !important;
+  }
+
+  #use-cases .use-card > .use-card-media img,
+  #profil .profile-card > .profile-media img,
+  #profile .profile-card > .profile-media img,
+  .use-card.profile-card > .profile-media img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
 }
